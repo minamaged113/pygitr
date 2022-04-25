@@ -1,0 +1,8 @@
+@startuml name
+
+(*) --> "Create Repo Object"
+--> "list branches"
+--> "list tags"
+--> (*)
+
+@enduml
