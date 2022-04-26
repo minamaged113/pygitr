@@ -1,5 +1,6 @@
 import subprocess
 import os
+from typing import Union
 
 class Repo():
     remote = None
@@ -31,7 +32,7 @@ class Repo():
             check=True
         )
 
-    def get_branches(self) -> dict | None:
+    def get_branches(self) -> Union[dict,None]:
         out = self.run(
             "git branch --format=\'%(refname);;%(refname:short);;%(objectname);;%(subject);;%(authorname);;%(authoremail);;%(authordate)\' -a"
         )
@@ -55,7 +56,7 @@ class Repo():
 
         return dict_branches
 
-    def get_tags(self) -> dict | None:
+    def get_tags(self) -> Union[dict,None]:
         out = self.run("git tag -l --format=\'%(refname);;%(refname:short);;%(objectname)\'")
         raw_tags = out.stdout.decode("utf-8")
         if len(raw_tags) == 0:
