@@ -6,7 +6,7 @@ import time
 import pytest
 
 
-class TestEnv:
+class _TestEnv:
     username = "pygitr_tester"
     email = "pygitr_tester@example.com"
     path = None
@@ -73,7 +73,7 @@ class TestEnv:
 
 
 @pytest.fixture
-def use_empty_repo(tmpdir) -> TestEnv:
+def use_empty_repo(tmpdir) -> _TestEnv:
     """Repository with no remote.
 
     Args:
@@ -82,21 +82,21 @@ def use_empty_repo(tmpdir) -> TestEnv:
     Returns:
         TestEnv: An instance of class TestEnv that represents the repository.
     """
-    env = TestEnv(path=tmpdir.strpath)
+    env = _TestEnv(path=tmpdir.strpath)
     env.create_git_repository()
     return env
 
 @pytest.fixture
-def use_basic_repo(use_empty_repo) -> TestEnv:
+def use_basic_repo(use_empty_repo) -> _TestEnv:
     use_empty_repo.add_remote_url()
     use_empty_repo.configure_repo()
     return use_empty_repo
 
 @pytest.fixture
-def use_repo_with_content(use_basic_repo) -> TestEnv:
+def use_repo_with_content(use_basic_repo) -> _TestEnv:
     use_basic_repo.create_change()
     use_basic_repo.stage_change()
     use_basic_repo.commit_change()
-    use_basic_repo.create_tag(tag=TestEnv.test_tag)
+    use_basic_repo.create_tag(tag=_TestEnv.test_tag)
     use_basic_repo.create_branch("develop")
     return use_basic_repo
