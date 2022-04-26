@@ -1,5 +1,6 @@
+from cgi import test
 from pygitr.Repo import Repo
-from test_fixtures import TestEnv, use_empty_repo, use_basic_repo, use_repo_with_content
+from test_fixtures import _TestEnv, use_empty_repo, use_basic_repo, use_repo_with_content
 
 
 def test_Repo_class_exists():
@@ -7,9 +8,9 @@ def test_Repo_class_exists():
     assert isinstance(repo, Repo)
 
 def test_read_local_repository_from_path(use_basic_repo):
-    repo = Repo(path=use_basic_repo.path, remote=TestEnv.remote)
+    repo = Repo(path=use_basic_repo.path, remote=_TestEnv.remote)
     assert repo.path == use_basic_repo.path
-    assert repo.remote == TestEnv.remote
+    assert repo.remote == _TestEnv.remote
 
 def test_read_all_branches(use_repo_with_content):
     repo = Repo(path=use_repo_with_content.path, remote=use_repo_with_content.remote)
@@ -18,4 +19,4 @@ def test_read_all_branches(use_repo_with_content):
 
 def test_read_all_tags(use_repo_with_content):
     repo = Repo(path=use_repo_with_content.path, remote=use_repo_with_content.remote)
-    assert TestEnv.test_tag in repo.tags.keys()
+    assert _TestEnv.test_tag in repo.tags.keys()
