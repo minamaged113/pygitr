@@ -87,13 +87,13 @@ def use_empty_repo(tmpdir) -> _TestEnv:
     return env
 
 @pytest.fixture
-def repo(use_empty_repo) -> _TestEnv:
+def use_basic_repo(use_empty_repo) -> _TestEnv:
     use_empty_repo.add_remote_url()
     use_empty_repo.configure_repo()
     return use_empty_repo
 
 @pytest.fixture
-def repo(use_basic_repo) -> _TestEnv:
+def use_repo_with_content(use_basic_repo) -> _TestEnv:
     use_basic_repo.create_change()
     use_basic_repo.stage_change()
     use_basic_repo.commit_change()
