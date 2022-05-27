@@ -20,7 +20,7 @@ class _TestEnv:
         username: str = None,
         email: str = None
     ) -> None:
-        self.path = path or tempfile.TemporaryDirectory(prefix=str(int(time.time()))+"-", suffix="pygitr-tests")
+        self.path = path or tempfile.TemporaryDirectory(prefix=str(int(time.time()))+"-", suffix="pygitr-tests").name
         self.remote = remote
         self.username = username
         self.email = email
@@ -43,32 +43,32 @@ class _TestEnv:
             f"git config --local user.email '{self.email or email}'"
         )
 
-    def create_change(self, content: str=None, filename: str = "file.txt"):
+    def create_change(self, content: str=None, filename: str = "file.txt") -> None:
         self.run(
             f"echo '{time.time()}' > {filename}"
         )
 
-    def stage_change(self, filename: str = "file.txt"):
+    def stage_change(self, filename: str = "file.txt") -> None:
         self.run(f"git add {filename}")
     
-    def commit_change(self, message:str="dummy"):
+    def commit_change(self, message:str="dummy") -> None:
         self.run(f"git commit -m {message}")
 
-    def create_git_repository(self):
+    def create_git_repository(self) -> None:
         self.run("git init .")
     
-    def add_remote_url(self, remote: str=None):
+    def add_remote_url(self, remote: str=None) -> None:
         self.run(
             f"git remote add origin {self.remote or remote}"
         )
 
-    def create_tag(self, tag:str, message:str="dummy_tag", commit_id:str=None):
+    def create_tag(self, tag:str, message:str="dummy_tag", commit_id:str=None) -> None:
         self.run(f"git tag -a {tag} {commit_id if commit_id else ''} -m '{message}'")
 
-    def create_branch(self, branch_name:str):
+    def create_branch(self, branch_name:str) -> None:
         self.run(f"git branch {branch_name}")
 
-    def checkout(self, ref:str):
+    def checkout(self, ref:str) -> None:
         self.run(f"git checkout {ref}")
 
 
@@ -87,13 +87,13 @@ def use_empty_repo(tmpdir) -> _TestEnv:
     return env
 
 @pytest.fixture
-def use_basic_repo(use_empty_repo) -> _TestEnv:
+def repo(use_empty_repo) -> _TestEnv:
     use_empty_repo.add_remote_url()
     use_empty_repo.configure_repo()
     return use_empty_repo
 
 @pytest.fixture
-def use_repo_with_content(use_basic_repo) -> _TestEnv:
+def repo(use_basic_repo) -> _TestEnv:
     use_basic_repo.create_change()
     use_basic_repo.stage_change()
     use_basic_repo.commit_change()
