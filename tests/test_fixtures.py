@@ -54,8 +54,17 @@ class _TestEnv:
     def commit_change(self, message:str="dummy") -> None:
         self.run(f"git commit -m {message}")
 
-    def create_git_repository(self) -> None:
+    def create_git_repository(self) -> str:
         self.run("git init .")
+        return self.path
+    
+    def create_git_repository_with_content(self) -> str: #TODO fix return type
+        self.run("git init .")
+        self.create_change()
+        self.stage_change()
+        self.commit_change()
+        self.create_tag(tag=_TestEnv.test_tag)
+        self.create_branch("develop")
     
     def add_remote_url(self, remote: str=None) -> None:
         self.run(
