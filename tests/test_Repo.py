@@ -1,4 +1,4 @@
-from pygitr.Repo import Repo
+from pygitter.Repo import Repo
 from test_fixtures import _TestEnv, use_empty_repo, use_basic_repo, use_repo_with_content
 
 
@@ -47,6 +47,6 @@ def test_mock_clone(mocker):
     def mock_clone(_):
         return "Repo.clone-mock"
 
-    mocker.patch("pygitr.Repo.Repo.clone", mock_clone)
+    mocker.patch("pygitter.Repo.Repo.clone", mock_clone)
     repo = Repo()
     assert "Repo.clone-mock"== repo.clone()

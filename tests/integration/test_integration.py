@@ -1,5 +1,5 @@
 import os
-from pygitr.Repo import Repo
+from pygitter.Repo import Repo
 
 
 def test_clone(tmpdir):
