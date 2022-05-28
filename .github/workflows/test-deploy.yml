@@ -1,0 +1,15 @@
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+- name: Publish package
+  if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+  uses: pypa/gh-action-pypi-publish@release/v1
+  with:
+    user: __token__
+    password: ${{ secrets.PyGitR_GITHUB_ACTIONS }}
+    repository_url: https://test.pypi.org/legacy/
+    verbose: true
+    verify_metadata: false
