@@ -1,4 +1,4 @@
-# pygitr
+# PyGitter
 Python git repository interface
 
 ## Usage

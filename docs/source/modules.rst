@@ -1,7 +1,7 @@
-pygitr
+pygitter
 ======
 
 .. toctree::
    :maxdepth: 4
 
-   pygitr
+   pygitter

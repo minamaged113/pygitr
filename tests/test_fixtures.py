@@ -7,8 +7,8 @@ import pytest
 
 
 class _TestEnv:
-    username = "pygitr_tester"
-    email = "pygitr_tester@example.com"
+    username = "pygitter_tester"
+    email = "pygitter_tester@example.com"
     path = None
     remote = "https://git/repo.git"
     test_tag = "1.0.0"
@@ -20,7 +20,7 @@ class _TestEnv:
         username: str = None,
         email: str = None
     ) -> None:
-        self.path = path or tempfile.TemporaryDirectory(prefix=str(int(time.time()))+"-", suffix="pygitr-tests").name
+        self.path = path or tempfile.TemporaryDirectory(prefix=str(int(time.time()))+"-", suffix="pygitter-tests").name
         self.remote = remote
         self.username = username
         self.email = email

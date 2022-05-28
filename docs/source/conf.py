@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'PyGitR'
+project = 'PyGitter'
 copyright = '2022, Mina Ghobrial'
 author = 'Mina Ghobrial'
 

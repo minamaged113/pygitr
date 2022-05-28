@@ -1,12 +1,12 @@
-.. PyGitR documentation master file, created by
+.. PyGitter documentation master file, created by
    sphinx-quickstart on Fri May 27 23:56:18 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PyGitR
+PyGitter
 ==================================
 
-**PyGitR** is git a repositories interface implemented in python.
+**PyGitter** is git a repositories interface implemented in python.
 
 .. toctree::
    :maxdepth: 2

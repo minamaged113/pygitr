@@ -1,13 +1,13 @@
-pygitr package
+pygitter package
 ==============
 
 Submodules
 ----------
 
-pygitr.Repo module
+pygitter.Repo module
 ------------------
 
-.. automodule:: pygitr.Repo
+.. automodule:: pygitter.Repo
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ pygitr.Repo module
 Module contents
 ---------------
 
-.. automodule:: pygitr
+.. automodule:: pygitter
    :members:
    :undoc-members:
    :show-inheritance:
